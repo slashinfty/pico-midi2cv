@@ -78,7 +78,6 @@ int main() {
 
     midi_to_cv.attach(&midi_handler);
     midi_to_cv.attach(&dac);
-    midi_to_cv.attach(&ui);
 
     while (1) {
         midi_to_cv.process();

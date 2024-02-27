@@ -1,14 +1,6 @@
 /**
- * @file midi_handler.h
- * @author Peter Zimon (peterzimon.com)
- * @brief 
  * Stores incoming MIDI notes in a ring buffer and returns it as the notes are
  * pushed or released. 
- * 
- * @version 0.1
- * @date 2022-06-03
- * 
- * @copyright Copyright (c) 2022
  */
 
 #ifndef _MIDI_HANDLER_H
