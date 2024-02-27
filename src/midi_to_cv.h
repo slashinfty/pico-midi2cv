@@ -7,7 +7,7 @@
  * Pitch CV
  * --------
  * Pitch CV is generated through a DAC (MCP4822) which can output 0-4095mV. To
- * cover the 10V range the DAC output value is amplified with an op-amp (TL07x).
+ * cover the 10V range the DAC output value is amplified with an op-amp (LM358).
  * 
  * Pitch bend value can be between 0 and 0x3fff with 0x2000 meaning no bend. 
  * Pitch bend CV calculation:
@@ -18,13 +18,12 @@
  * Gate
  * ----
  * Gate is output on a standard GPIO pin on the PICO (can be set in settings.h)
- * which is amplified with a standard op-amp (e.g. TL07x) or a level shifter 
+ * which is amplified with a standard op-amp (e.g. LM358) or a level shifter 
  * (e.g. CD4504).
  */
 
 #include "settings.h"
 #include <mcp48x2.h>
-#include "ui.h"
 #include "midi_handler.h"
 #include "math.h"
 #include <utils.h>
@@ -33,7 +32,6 @@ class MidiToCV {
 public:
     void init();
     void attach(MCP48X2 *dac);
-    void attach(UI *ui);
     void attach(MidiHandler *midi_handler);
     void process();
 
@@ -48,7 +46,6 @@ private:
     int16_t m_pitch_bend_cv;
 
     MCP48X2 *m_dac;
-    UI *m_ui;
     MidiHandler *m_midi_handler;
 };
 

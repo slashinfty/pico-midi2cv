@@ -45,9 +45,9 @@
 
 // DAC
 #define DAC_SPI_PORT        spi0
-#define GP_DAC_CS           5
-#define GP_DAC_SCK          6
-#define GP_DAC_MOSI         7
+#define GP_DAC_CS           13
+#define GP_DAC_SCK          12
+#define GP_DAC_MOSI         11
 
 // MIDI
 #define LOWEST_MIDI_NOTE    0x00
@@ -56,34 +56,15 @@
 #define PITCH_BEND_CENTER   0x2000
 #define MAX_PB_SEMINOTES    2
 
-#define GP_CHANNEL_DIP_0    13
-#define GP_CHANNEL_DIP_1    12
-#define GP_CHANNEL_DIP_2    11
-#define GP_CHANNEL_DIP_3    10
-
 #define MIDI_OCTAVE_SHIFT   -2
 
 #define MIDI_UART_INSTANCE  uart1
-#define GP_MIDI_RX          9
+#define GP_MIDI_RX          21
 #define MIDI_BAUDRATE       31250
 
 // CV
 #define MAX_NOTE_VOLTAGE    4095
-#define GP_GATE             15
-
-// ADC
-#define ADC_GP_PITCHBEND    26 // GPIO26
-#define HW_PB_MAX_DIFF      1900 // Decimal value of max difference of hardware
-                                 // pitch value compared to reference. The Pico
-                                 // ADC is a piece of shit, will never be 0
-                                 // or 4095 as it supposed to be. This value
-                                 // determines the max/min values that the
-                                 // pitchbend is measured until. So e.g. if
-                                 // the pitchbend reference is 2032 and the max
-                                 // diff value is 1900 then the maximum measured
-                                 // value can only be 3932 (not 4095). This will
-                                 // represent 0x3fff pitchbend value in MIDI
-                                 // terms.
+#define GP_GATE             6
 
 struct Settings
 {

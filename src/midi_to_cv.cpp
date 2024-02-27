@@ -16,10 +16,6 @@ void MidiToCV::attach(MCP48X2 *dac) {
     m_dac = dac;
 }
 
-void MidiToCV::attach(UI *ui) {
-    m_ui = ui;
-}
-
 void MidiToCV::attach(MidiHandler *midi_handler) {
     m_midi_handler = midi_handler;
 }

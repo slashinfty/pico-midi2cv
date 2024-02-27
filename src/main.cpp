@@ -1,7 +1,4 @@
 /**
- * @author Peter Zimon (peterzimon.com)
- * @copyright Copyright (c) 2022
- *
  * Base logic
  * ----------
  * There are two main working modes: if the sequencer is playing (receives clock
@@ -24,14 +21,10 @@
  * - Sets gate gpio
  * - Saves settings for MIDI to CV conversion (if there's any)
  *
- * UI
- * - Handles gpio for UI
- *
  * Connections
  * -----------
  * midi_to_cv.attach(midi_handler)
  * midi_to_cv.attach(dac)
- * midi_to_cv.attach(ui)
  *
  * Flashing
  * --------
@@ -68,20 +61,17 @@
  */
 #include "settings.h"
 #include "midi_handler.h"
-#include "ui.h"
 #include "midi_to_cv.h"
 
 Settings settings;
 MCP48X2 dac;
 MidiHandler midi_handler;
-UI ui;
 MidiToCV midi_to_cv;
 
 int main() {
     stdio_init_all();
 
     sleep_ms(2000);
-    ui.init();
     dac.init(DAC_SPI_PORT, GP_DAC_CS, GP_DAC_SCK, GP_DAC_MOSI);
     midi_handler.init();
     midi_to_cv.init();
@@ -91,7 +81,6 @@ int main() {
     midi_to_cv.attach(&ui);
 
     while (1) {
-        ui.update();
         midi_to_cv.process();
     }
 
